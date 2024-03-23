@@ -3,6 +3,6 @@ export default function constraints() {
     return Object.assign(objA, objB);
   }
 
-  const mergeObj = merge({ name: "Alice", hobbies: ['sports'] }, { age: 30 });
-  console.log(mergeObj.age);
+  const mergeObj = merge({ name: "Alice", hobbies: ["sports"] }, { age: 30 });
+  console.log(mergeObj);
 } // end of constraints
