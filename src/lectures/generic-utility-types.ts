@@ -52,9 +52,9 @@ export default function genericUtilityTypes() {
   } // end of class Storage
 
   const textStorage = new DataStorage<string>();
-  textStorage.addItem('Max');
-  textStorage.addItem('Manu');  
-  textStorage.removeItem('Max');
+  textStorage.addItem("Max");
+  textStorage.addItem("Manu");
+  textStorage.removeItem("Max");
   //console.log(textStorage.getItems());
 
   // const objStorage = new DataStorage<object>();
@@ -63,5 +63,24 @@ export default function genericUtilityTypes() {
   // objStorage.addItem(maxObj);
   // objStorage.removeItem({name: 'Max'});
   // console.log(objStorage.getItems());
+
+  interface CourseGoal {
+    title: string;
+    description: string;
+    completeUntil: Date;
+  }
+
+  function createCourseGoal(title: string, description: string, date: Date): CourseGoal {
+    let courseGoal: Partial<CourseGoal> = {};
+    courseGoal.title = title;
+    courseGoal.description = description;
+    courseGoal.completeUntil = date;
+    return courseGoal as CourseGoal;
+  }
+
+  const names: Readonly<string[]> = ['Max', 'Sports'];
+  // names.push('Manu');
+  // names.pop();
+  console.log(`names: ${names}`);
 
 } // end of export default function genericUtilityTypes()
