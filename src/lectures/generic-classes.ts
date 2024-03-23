@@ -32,7 +32,7 @@ export default function genericClasses() {
 
   console.log(extractAndConvert(mergeObj, "name"));
 
-  class DataStorage<T> {
+  class DataStorage<T extends string | number | boolean> {
     private data: T[] = [];
 
     addItem(item: T) {
@@ -40,6 +40,9 @@ export default function genericClasses() {
     }
 
     removeItem(item: T) {
+      if (this.data.indexOf(item) === -1) {
+        return;
+      }
       this.data.splice(this.data.indexOf(item), 1);
     }
 
@@ -52,6 +55,13 @@ export default function genericClasses() {
   textStorage.addItem('Max');
   textStorage.addItem('Manu');  
   textStorage.removeItem('Max');
-  console.log(textStorage.getItems());
+  //console.log(textStorage.getItems());
+
+  // const objStorage = new DataStorage<object>();
+  // const maxObj = {name: 'Max'}
+  // objStorage.addItem(maxObj);
+  // objStorage.addItem(maxObj);
+  // objStorage.removeItem({name: 'Max'});
+  // console.log(objStorage.getItems());
 
 } // end of export default function genericClasses()
